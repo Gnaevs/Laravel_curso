@@ -50,12 +50,7 @@
 
 //Tambien se puede generar una vista de la forma
 
-$portfolio = [
-    ['title' => 'proyecto #1'],
-    ['title' => 'proyecto #2'],
-    ['title' => 'proyecto #3'],
-    ['title' => 'proyecto #4']
-];
+
 
 
 Route::view('/', 'home')->name('home'); //es preferible hacerlo asi para paginas de poca informacion como: politicas de privacidad
@@ -66,9 +61,9 @@ Route::view('/', 'home')->name('home'); //es preferible hacerlo asi para paginas
 //Route::view('/','home', ['nombre' => 'Romeo']);
 
 Route::view('/about', 'about')->name('about');
-Route::view('portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
 Route::view('/contact', 'contact')->name('contact');
-
+//Route::get('portfolio', 'PorfolioController'); //Aqui se esta llamando al controlador en lugar de la vista la vista se llama desde el controlador
+Route::get('/portfolio',[\App\Http\Controllers\PorfolioController::class, '__invoke'])->name('portfolio');
 
 //---------------------------Blade--------------------------------------------------------------------
 //Blade es un motor de plantillas que trae incluido laravel
