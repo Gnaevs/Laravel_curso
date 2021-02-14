@@ -58,7 +58,7 @@
 
     {{--                  JUGAR CONDICIONALES Y EL DUMP                       --}}
 
-    @forelse ($portfolioI as $portFolioItem)
+    @forelse ($portfolio as $portFolioItem)
         <li>{{$portFolioItem['title'] }}<small>{{$loop -> first ? ' este es el primero' : ''}}</small></li>        
     @empty
         <li>No hay elementos para mostrar</li>        
