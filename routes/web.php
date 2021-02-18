@@ -60,7 +60,7 @@ Route::view('/', 'home')->name('home'); //es preferible hacerlo asi para paginas
 
 //Route::view('/','home', ['nombre' => 'Romeo']);
 
-Route::view('/about', 'about')->name('about');
+Route::view('/about/{param?}', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 //Route::get('portfolio', 'PorfolioController'); //Aqui se esta llamando al controlador en lugar de la vista la vista se llama desde el controlador
 Route::get('/portfolio','PortfolioController@index')->name('portfolio'); // Llamar el controlador resource
