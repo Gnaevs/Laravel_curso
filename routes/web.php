@@ -1,5 +1,4 @@
 <?php
-
 //Romeo.com = Route::get('/',function)
 
 //Romeo.com/contacto = Route::get('contacto',function)
@@ -67,12 +66,11 @@ Route::get('/portfolio','PortfolioController@index')->name('portfolio'); // Llam
 
 //Route::Resource('proyectos', 'PortfolioController');//Controlador Resource
 Route::apiResource('proyectos', 'PortfolioController');//Controlador api
+Route::post('/contact', [\App\Http\Controllers\MessagesController::class, 'store']);
+
 
 
 //---------------------------Blade--------------------------------------------------------------------
 //Blade es un motor de plantillas que trae incluido laravel
 //para usarlo solo debemos usar la extension blade en las vistas
 //por ejemplo home.blade.php
-
-
-
