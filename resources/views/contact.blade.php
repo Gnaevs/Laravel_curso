@@ -2,21 +2,23 @@
 @section('title','Contact')
 
 @section('content')
-<h1>Contact</h1>
-    @if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)   
-            <li>{{$error}}</li>
-        @endforeach
-    </ul>        
-    @endif
+<h1>{{__('Contact')}}</h1>
+    
     <form method="POST" action="{{route('contact')}}">
         @csrf
-        <input name="name" placeholder="Nombre ..." value=""><br>
-        <input type="email" name="email" placeholder="Email ..." value=""><br>
-        <input name="subject" placeholder="asunto..."><br>
-        <textarea name="content" placeholder="Mensaje ..." ></textarea><br>
-        <button type="submit">Enviar</button><br>
+        <input name="name" placeholder="Nombre ..." value="{{old('name')}}"><br>
+        {!! $errors->first('name', '<small>:message</small><br>') !!}
+
+        <input type="text" name="email" placeholder="Email ..." value="{{old('email')}}"><br>
+        {!! $errors->first('email', '<small>:message</small><br>') !!}
+
+        <input name="subject" placeholder="asunto..." value="{{old('subject')}}" ><br>
+        {!! $errors->first('subject', '<small>:message</small><br>') !!}
+
+        <textarea name="content" placeholder="Mensaje ..." value="">{{old('content')}}</textarea><br>
+        {!! $errors->first('content', '<small>:message</small><br>') !!}
+
+        <button type="submit">@lang('Send')</button><br>
 
     </form>
 @endsection
