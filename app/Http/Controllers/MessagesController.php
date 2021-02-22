@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 class MessagesController extends Controller
 {
     public function store(){
-        return request('name');
+        request()->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        return 'Datos validados';
     }
 }
