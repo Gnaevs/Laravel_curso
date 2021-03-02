@@ -63,7 +63,7 @@ Route::view('/about/{param?}', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 //Route::get('portfolio', 'PorfolioController'); //Aqui se esta llamando al controlador en lugar de la vista la vista se llama desde el controlador
 Route::get('/portfolio','PortfolioController@index')->name('portfolio'); // Llamar el controlador resource
-
+Route::get('/portfolio/{id}', 'PortfolioController@show')->name('portfolio.show');
 //Route::Resource('proyectos', 'PortfolioController');//Controlador Resource
 Route::apiResource('proyectos', 'PortfolioController');//Controlador api
 Route::post('/contact', [\App\Http\Controllers\MessagesController::class, 'store']);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Models\Project;
 
 class PortfolioController extends Controller
 {
@@ -14,9 +14,11 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = DB::table('projects')->get();
+       
 
-        return view('portfolio',compact('portfolio'));
+        return view('portfolio',[
+            'projects' => Project::paginate()
+        ]);
     }
 
 }

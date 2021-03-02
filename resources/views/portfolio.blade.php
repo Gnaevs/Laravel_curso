@@ -47,8 +47,8 @@
 
     {{--              HACER UN DUMP        --}}
 
-    {{-- @forelse ($portfolio as $portFolioItem)
-        <li>{{$portFolioItem['title'] }} <pre>{{var_dump($loop)}}</pre></li>        
+    {{-- @forelse ($projects as $project)
+        <li>{{$project->title }} <pre>{{var_dump($loop)}}</pre></li>        
     @empty
         <li>No hay elementos para mostrar</li>
         
@@ -58,11 +58,15 @@
 
     {{--                  JUGAR CONDICIONALES Y EL DUMP                       --}}
 
-    @forelse ($portfolio as $portFolioItem)
-        <li>{{$portFolioItem->title }} <br><small>{{ $portFolioItem->description }}</small></li>        
+
+
+    @forelse ($projects as $project)
+    <li><a href="{{ route('portfolio.show', $project) }}">{{$project->title }}</a></li>        
     @empty
         <li>No hay elementos para mostrar</li>        
     @endforelse
+    {{$projects->links('pagination::bootstrap-4')}}
+    
 
     {{--                      TAMBIEN TENEMOS                             --}}
 
