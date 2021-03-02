@@ -59,14 +59,14 @@ Route::view('/', 'home')->name('home'); //es preferible hacerlo asi para paginas
 
 //Route::view('/','home', ['nombre' => 'Romeo']);
 
-Route::view('/about/{param?}', 'about')->name('about');
-Route::view('/contact', 'contact')->name('contact');
+Route::view('/quienes-somos/{param?}', 'about')->name('about');
+Route::view('/contacto', 'contact')->name('contact');
 //Route::get('portfolio', 'PorfolioController'); //Aqui se esta llamando al controlador en lugar de la vista la vista se llama desde el controlador
-Route::get('/portfolio','PortfolioController@index')->name('portfolio'); // Llamar el controlador resource
-Route::get('/portfolio/{id}', 'PortfolioController@show')->name('portfolio.show');
+Route::get('/portafolio','ProjectController@index')->name('projects.index'); // Llamar el controlador resource
+Route::get('/portafolio/{id}', 'ProjectController@show')->name('projects.show');
 //Route::Resource('proyectos', 'PortfolioController');//Controlador Resource
-Route::apiResource('proyectos', 'PortfolioController');//Controlador api
-Route::post('/contact', [\App\Http\Controllers\MessagesController::class, 'store']);
+//Route::apiResource('proyectos', 'PortfolioController');//Controlador api
+Route::post('/contacto', [\App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
 
 
