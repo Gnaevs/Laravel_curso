@@ -16,6 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();//Aqui ya viene incluido el autoincremental
             $table->string('title');
+            $table->string('url')->unique();
             $table->text('description');//el tipo text puede tener mas caracteres
             $table->timestamps();
         });

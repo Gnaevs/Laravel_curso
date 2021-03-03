@@ -21,13 +21,31 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id){
-        // $project = Project::find($id);
-
+    public function show(Project $project){
         return view('projects.show',[
-            'project' => Project::findOrFail($id)
+            'project' => $project
         ]);
 
     }
+    
+    public function create()
+    {
+        return view('projects.create');
+    }
+
+    public function store()
+    {
+        $fields = request()->validate([
+            'title' => 'required',
+            'url' => 'required',
+            'description' => 'required'
+        ]);
+
+        //Project::create( request()->only('title','url','description') ); //['title', 'url', 'description', 'approved' => true] 
+        Project::create( $fields );
+        return redirect()->route('projects.index');
+    }
+
+    
 
 }
