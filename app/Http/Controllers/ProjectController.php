@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -33,17 +34,25 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function store()
-    {
-        $fields = request()->validate([
-            'title' => 'required',
-            'url' => 'required',
-            'description' => 'required'
-        ]);
-
+    public function store(SaveProjectRequest $request)
+    {      
         //Project::create( request()->only('title','url','description') ); //['title', 'url', 'description', 'approved' => true] 
-        Project::create( $fields );
+        Project::create( $request->validate() );
         return redirect()->route('projects.index');
+    }
+
+    public function edit(Project $project)
+    {
+        return view('projects.edit',[
+            'project' => $project
+        ]);
+    }
+
+    public function update(Project $project, SaveProjectRequest $request)
+    {
+        $project->update($request->validate());
+
+        return redirect()->route('projects.show',$project);
     }
 
     
