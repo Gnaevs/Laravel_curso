@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $guarded = [];
+    //protected $fillable = ['title','url','description'];
 
     public function getRouteKeyName()
     {
         return 'url';
     }
 
-    use HasFactory;
+    //use HasFactory;
 }
