@@ -3,6 +3,9 @@
 
 @section('content')
 <h1>{{__('Contact')}}</h1>
+@if (session('status'))
+    {{session('status')}}
+@else
     
     <form method="POST" action="{{route('messages.store')}}">
         @csrf
@@ -21,4 +24,5 @@
         <button type="submit">@lang('Send')</button><br>
 
     </form>
+@endif
 @endsection
