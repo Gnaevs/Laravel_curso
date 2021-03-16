@@ -8,3 +8,5 @@ Route::resource('portafolio', 'ProjectController')
     ->parameters(['portafolio' => 'project']);
 
 Route::post('/contacto', [\App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');    
+
+Auth::routes();

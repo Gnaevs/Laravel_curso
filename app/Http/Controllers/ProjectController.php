@@ -42,7 +42,7 @@ class ProjectController extends Controller
     {      
         //Project::create( request()->only('title','url','description') ); //['title', 'url', 'description', 'approved' => true] 
          Project::create( $request->validated() );
-         return redirect()->route('projects.index');
+         return redirect()->route('projects.index')->with('status', 'El projecto fue creado con exito');
         
     }
 
