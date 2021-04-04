@@ -5,7 +5,8 @@ Route::view('/contacto', 'contact')->name('contact');
 
 Route::resource('portafolio', 'ProjectController')
     ->names('projects')
-    ->parameters(['portafolio' => 'project']);
+    ->parameters(['portafolio' => 'project'])
+    ;
 
 Route::post('/contacto', [\App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');    
 
